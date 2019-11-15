@@ -38,7 +38,9 @@
         <!--------------------------------選單開始---------------------------------------------------->  
         <div class="menu">
             <ul>
-                <li class="menuli01"><a href="/yachts1.aspx?id=10" style="height: 70px;width: 80px;display: inline-block;">Yachts</a></li>
+                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+<%--                <li class="menuli01"><asp:Button ID="Button1" runat="server" Text="Yachts" style="height: 70px;width: 80px;display: inline-block;" OnClick="Button1_Click"/></li>
+                <li class="menuli01"><a href="/yachts1.aspx?id=10" style="height: 70px;width: 80px;display: inline-block;">Yachts</a></li>--%>
                 <li class="menuli02"><a href="/new_list.aspx" style="height: 70px;width: 80px;display: inline-block;">>NEWS</a></li>
                 <li class="menuli03"><a href="/Company.aspx" style="height: 70px;width: 80px;display: inline-block;">>COMPANY</a></li>
                 <li class="menuli04"><a href="/dealers.aspx" style="height: 70px;width: 80px;display: inline-block;">>DEALERS</a></li>
@@ -51,12 +53,12 @@
 
             
 
-            
+            <asp:HiddenField ID="HiddenField1" runat="server" />
             <asp:Literal ID="photoList" runat="server"></asp:Literal>
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                 <HeaderTemplate>
                     <!--遮罩-->
-                    <div class="bannermasks" style="margin: 114px 0 0 19px" >
+                    <div class="bannermasks" style="margin: 78px 0 0 0px" >
                         <img src="images/banner01_masks.png" alt="&quot;&quot;" />
                     </div>
                     <!--遮罩結束-->
@@ -75,7 +77,7 @@
                         <a href="/upload/images/<%#Eval("photo")%>">
                             <img src="/upload/images/s<%#Eval("photo")%>">
                         </a>
-                    </li>
+                    &nbsp;</li>
                     
                     <%--<li>
                         <a href="images/menu2_06.gif">
@@ -211,14 +213,18 @@
             </div>
         </div>
     </div>--%>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:tayanaConnectionString %>" SelectCommand="SELECT * FROM [TayanaPhotoList]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:tayanaConnectionString %>" SelectCommand="SELECT * FROM [TayanaPhotoList] WHERE ([fid] = @fid)">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="HiddenField1" Name="fid" PropertyName="Value" Type="Int32" />
+                </SelectParameters>
+            </asp:SqlDataSource>
             <div class="conbg">
                 <!--------------------------------左邊選單開始---------------------------------------------------->
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                 </asp:ContentPlaceHolder>
                 <div class="left">
                     <div class="left1">
-                        <p><span>YACHTS</span></p>
+                        <p><span>YACHTS></p>
                         <ul>
                             <asp:Literal ID="leftList" runat="server"></asp:Literal>
                             <%--                            <li><a href="#">Dynasty 72</a></li>

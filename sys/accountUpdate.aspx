@@ -12,8 +12,8 @@
             <!-- Basic Validation -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
+                    <div class="card" style="padding: 15px;">
+                        <%--<div class="header">
                             <h2>帳號資訊</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -27,16 +27,16 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                        </div>--%>
                         <div class="body">
                             </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <asp:HiddenField ID="hidID" runat="server" />
 <%--                                        <asp:TextBox ID="account" class="form-control" name="account" required="" aria-required="true" runat="server"></asp:TextBox>--%>
-                                        <asp:Label ID="account" class="form-control" runat="server" Text="Label"></asp:Label>
+                                        <asp:Label ID="account" class="form-control" runat="server" Text="Label" Font-Bold="True" Font-Size="20px"></asp:Label>
                       <%--                  <input type="text" class="form-control" name="account" required="" aria-required="true" runat="server">--%>
-                                        <label class="form-label">Account</label>
+                                        <%--<label class="form-label">Account</label>--%>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">

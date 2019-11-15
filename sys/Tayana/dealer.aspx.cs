@@ -15,6 +15,8 @@ namespace Tayana.sys.Tayana
         {
             if (!IsPostBack)
             {
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "dealer";
                 showData();
             }
         }
@@ -78,7 +80,7 @@ namespace Tayana.sys.Tayana
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"/sys/tayana/newsAdd.aspx");
+            Response.Redirect($"/sys/tayana/dealerAdd.aspx");
         }
 
 

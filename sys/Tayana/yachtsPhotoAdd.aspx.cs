@@ -15,24 +15,30 @@ namespace Tayana.sys.Tayana
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int id=0;
             if (!IsPostBack)
             {
-                int id = Convert.ToInt32(Request.QueryString["id"]);
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "yachts";
 
-                Session["id"] = id;
+                id = Convert.ToInt32(Request.QueryString["id"]);
+
+                //Session["id"] = id;
+
+                WhereAmI();
 
                 string strConn = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
                     .ConnectionString;
 
                 SqlConnection connection = new SqlConnection(strConn);
 
-                string code = $"select* FROM tayanaPhotoList where fid=@id ORDER BY home desc, id desc";
+                string code = $"with tayanaPhotoListtt as ( select ROW_NUMBER() OVER (ORDER BY tayanaPhotoList.home desc) AS RowNumber,(select model from tayanaSummary where id=tayanaPhotoList.fid )as model,* from tayanaPhotoList where fid=@id ) select * from tayanaPhotoListtt";
 
                 //new一個類別為SqlCommand的指令(其名為Command)，而其用法為 new SqlCommand("SQL語法",通道名稱);  ，其中 SQL語法 可由精靈產生
                 SqlCommand command = new SqlCommand(code, connection);
 
                 command.Parameters.Add("@id", SqlDbType.Int);
-                command.Parameters["@id"].Value = Convert.ToInt32(Request.QueryString["id"]);
+                command.Parameters["@id"].Value = Convert.ToInt32(Request.QueryString["id"] ?? "");
 
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -44,6 +50,8 @@ namespace Tayana.sys.Tayana
                 //把這個資料表(GridView1)跟資料(reader)作雙向繫結
                 GridView1.DataBind();
 
+                //Label2.Text = "型號： Model "+table.Rows[0][1].ToString();
+
                 connection.Close();
 
                 //for (int i = 0; i < table.Rows.Count; i++)
@@ -51,10 +59,36 @@ namespace Tayana.sys.Tayana
                 //    Literal1.Text += $@"<li><img src = ""{table.Rows[i][2].ToString()}""></li> ";
                 //}
 
-
+                
 
             }
             
+        }
+
+        protected void WhereAmI()
+        {
+            string strConn = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
+                .ConnectionString;
+
+            SqlConnection connection = new SqlConnection(strConn);
+
+            string code = $"select model from tayanaSummary where id=@id ";
+
+            //new一個類別為SqlCommand的指令(其名為Command)，而其用法為 new SqlCommand("SQL語法",通道名稱);  ，其中 SQL語法 可由精靈產生
+            SqlCommand command = new SqlCommand(code, connection);
+
+            command.Parameters.Add("@id", SqlDbType.Int);
+            command.Parameters["@id"].Value = Request.QueryString["id"];
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            Label2.Text = "型號： Model " + table.Rows[0][0].ToString();
+
+            connection.Close();
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -63,7 +97,7 @@ namespace Tayana.sys.Tayana
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string fileName;
+            string fileName="";
             if (FileUpload2.HasFile)  
             {
                 for (int i = 0; i < Request.Files.Count; i++)  //http://popoplanet.blogspot.com/2017/05/cfileupload-upload-multiple-files.html
@@ -151,11 +185,11 @@ namespace Tayana.sys.Tayana
             //ExecuteNonQuery 本method直接翻譯是執行但不用回傳資料，但實際上仍有一個回傳值，會回傳一個INT(顯示受影響的資料筆數)，但一般而言並不會設變數來接。
             command.ExecuteNonQuery();
 
-            connection.Close();
+            //connection.Close();
 
-            string idd = Session["id"].ToString();
+            //string idd = Session["id"].ToString();
 
-            Response.Redirect($"yachtsPhotoAdd.aspx?id={idd}");
+            Response.Redirect($"yachtsPhotoAdd.aspx?id={id}");
         }
         protected void ChangeImageSize(string FileName, string FilePath, int SmallHeight)
         {
@@ -218,7 +252,7 @@ namespace Tayana.sys.Tayana
                     SqlCommand command2 = new SqlCommand(code2, connection);
 
                     command2.Parameters.Add("@keyId", SqlDbType.Int);
-                    command2.Parameters["@keyId"].Value = keyId ;
+                    command2.Parameters["@keyId"].Value = id1;
 
                     connection.Open(); //一般而言，open 及 close 會同時打，以免忘記
 

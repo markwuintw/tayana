@@ -15,7 +15,7 @@
 
     <!--------------------------------換圖開始---------------------------------------------------->
 
-    <div class="banner">
+    <div class="banner" style="height: 370px;">
         <ul>
             <li>
                 <img src="images/newbanner.jpg" alt="Tayana Yachts" /></li>
@@ -34,7 +34,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
-    <div id="crumb"><a href="/index.aspx">Home</a> >><a href="/contact.aspx"><span class="on1">Contact</span></a></div>
+    <div id="crumb" style="top: 515px;"><a href="/index.aspx">Home</a> >><a href="/contact.aspx"><span class="on1">Contact</span></a></div>
                 <div class="right">
                     <div class="right1">
                         <div class="title"><span>Contact</span></div>
@@ -49,22 +49,22 @@
                             <table>
                                 <tr>
                                     <td class="from01td01">Name :</td>
-                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Name" type="text" id="ctl00_ContentPlaceHolder1_Name" class="{validate:{required:true, messages:{required:'Required'}}}" style="width: 250px;" required="" />
+                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Name" type="text" id="ctl00_ContentPlaceHolder1_Name" runat="server"  class="{validate:{required:true, messages:{required:'Required'}}}" style="width: 250px;" required="" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="from01td01">Email :</td>
-                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Email" type="text" id="ctl00_ContentPlaceHolder1_Email" class="{validate:{required:true, email:true, messages:{required:'Required', email:'Please check the E-mail format is correct'}}}" style="width: 250px;" required="" /></td>
+                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Email" type="text" id="ctl00_ContentPlaceHolder1_Email"  runat="server" class="{validate:{required:true, email:true, messages:{required:'Required', email:'Please check the E-mail format is correct'}}}" style="width: 250px;" required="" /></td>
                                 </tr>
                                 <tr>
                                     <td class="from01td01">Phone :</td>
-                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Phone" type="text" id="ctl00_ContentPlaceHolder1_Phone" class="{validate:{required:true, messages:{required:'Required'}}}" style="width: 250px;" required="" /></td>
+                                    <td><span>*</span><input name="ctl00$ContentPlaceHolder1$Phone" type="text" id="ctl00_ContentPlaceHolder1_Phone" runat="server"  class="{validate:{required:true, messages:{required:'Required'}}}" style="width: 250px;" required="" /></td>
                                 </tr>
                                 <tr>
                                     <td class="from01td01">Country :</td>
                                     <td><span>*</span>
 
-                                        <select name="ctl00$ContentPlaceHolder1$Country" id="ctl00_ContentPlaceHolder1_Country" required="">
+                                        <select name="ctl00$ContentPlaceHolder1$Country" id="ctl00_ContentPlaceHolder1_Country" required="" runat="server" >
                                             <option value="USA">USA</option>
                                             <option value="ASIA">ASIA</option>
                                             <option value="EUROPE">EUROPE</option>
@@ -83,7 +83,7 @@
                                 <tr>
                                     <td class="from01td01">&nbsp;</td>
                                     <td>
-                                        <select name="ctl00$ContentPlaceHolder1$Yachts" id="ctl00_ContentPlaceHolder1_Yachts">
+                                        <select name="ctl00$ContentPlaceHolder1$Yachts" id="ctl00_ContentPlaceHolder1_Yachts"  runat="server" >
                                             <option value="Tayana 37">Tayana 37</option>
                                             <option value="Tayana 46">Tayana 46</option>
                                             <option value="Tayana 48">Tayana 48</option>
@@ -97,7 +97,7 @@
                                 <tr>
                                     <td class="from01td01">Comments:</td>
                                     <td>
-                                        <textarea name="ctl00$ContentPlaceHolder1$Comments" rows="2" cols="20" id="ctl00_ContentPlaceHolder1_Comments" style="height: 150px; width: 330px;"></textarea></td>
+                                        <textarea name="ctl00$ContentPlaceHolder1$Comments" rows="2" cols="20" id="ctl00_ContentPlaceHolder1_Comments" style="height: 150px; width: 330px;" runat="server" ></textarea></td>
                                 </tr>
  <%--                               <tr>
                                     <td class="from01td01">&nbsp;</td>
@@ -108,7 +108,8 @@
                                 <tr>
                                     <td class="from01td01">&nbsp;</td>
                                     <td class="f_right">
-                                        <input type="image" name="ctl00$ContentPlaceHolder1$ImageButton1" id="ctl00_ContentPlaceHolder1_ImageButton1" src="images/buttom03.gif" style="border-width: 0px;" />
+<%--                                        <input type="image" runat="server" name="ctl00$ContentPlaceHolder1$ImageButton1" id="ctl00_ContentPlaceHolder1_ImageButton1" src="images/buttom03.gif" style="border-width: 0px;" />--%>
+                                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="images/buttom03.gif" style="border-width: 0px;"  name="ctl00$ContentPlaceHolder1$ImageButton1" OnClick="ImageButton1_Click"/>
                                     </td>
                                 </tr>
                             </table>

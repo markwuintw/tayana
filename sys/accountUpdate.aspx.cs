@@ -46,7 +46,7 @@ namespace Tayana.sys
                 if (dataReader.Read())
                 {
                    
-                    account.Text = dataReader["account"].ToString();
+                    account.Text ="帳號："+ dataReader["account"].ToString();
                     //password.Text = dataReader["password"].ToString();
 
                     HiddenFieldPas.Value = dataReader["password"].ToString();

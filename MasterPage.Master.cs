@@ -15,7 +15,32 @@ namespace Tayana
         {
             if (!IsPostBack)
             {
-                int id = Convert.ToInt32(Request.QueryString["id"]);
+                string strConn3 = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
+                    .ConnectionString;
+
+                SqlConnection connection3 = new SqlConnection(strConn3);
+
+                string code3 = $"SELECT top(1) id FROM tayanaSummary order by initTime asc ";
+
+                //new一個類別為SqlCommand的指令(其名為Command)，而其用法為 new SqlCommand("SQL語法",通道名稱);  ，其中 SQL語法 可由精靈產生
+                SqlCommand command3 = new SqlCommand(code3, connection3);
+
+                SqlDataAdapter adapter3 = new SqlDataAdapter(command3);
+
+                DataTable table3 = new DataTable();
+
+                adapter3.Fill(table3);
+
+                string idd = table3.Rows[0][0].ToString();
+
+                Literal1.Text = $@"<li class=""menuli01""><a href=""/yachts1.aspx?id={idd}"" style=""height:70px; width:80px; display:inline-block; "">Yachts</a></li>";
+
+
+
+
+
+
+                int id = Convert.ToInt32(Request.QueryString["id"]) == 0?10:Convert.ToInt32(Request.QueryString["id"]);
 
                 Session["id"] = id;
 
@@ -54,13 +79,15 @@ namespace Tayana
 
                 //leftList 開始
 
-                string code2 = $"SELECT  id, model, new, initTime FROM tayanaSummary ";
+                string code2 = $"SELECT  id, model, new, initTime, series FROM tayanaSummary ";
 
                 //new一個類別為SqlCommand的指令(其名為Command)，而其用法為 new SqlCommand("SQL語法",通道名稱);  ，其中 SQL語法 可由精靈產生
                 SqlCommand command2 = new SqlCommand(code2, connection);
 
                 command2.Parameters.Add("@id", SqlDbType.Int);
                 command2.Parameters["@id"].Value = Convert.ToInt32(Request.QueryString["id"]);
+
+                HiddenField1.Value = @id.ToString();
 
                 SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
 
@@ -74,11 +101,11 @@ namespace Tayana
                 {
                     if (table2.Rows[i][2].ToString()=="True")
                     {
-                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}"">{table2.Rows[i][1].ToString()}(New Building)</a></li>";
+                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}(New Building)</a></li>";
                     }
                     else
                     {
-                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}"">{table2.Rows[i][1].ToString()}</a></li>";
+                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}</a></li>";
                     }
                 }
 
@@ -87,5 +114,7 @@ namespace Tayana
                 connection.Close();
             }
         }
+
+       
     }
 }

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace backGroundSystem_Orid.sys
+namespace Tayana.sys
 {
     /// <summary>
     /// checkusername 的摘要描述
@@ -18,6 +18,8 @@ namespace backGroundSystem_Orid.sys
             context.Response.ContentType = "text/plain";//回傳的是文字所以用這行;ORID用Json
 
             string account = context.Request.QueryString["username"];
+
+            //string account = context.Request.QueryString["username"];
 
             string get = System.Web.Configuration.WebConfigurationManager
                 .ConnectionStrings["login"].ConnectionString;
@@ -36,7 +38,7 @@ namespace backGroundSystem_Orid.sys
 
             loginAdapter.Fill(user);
 
-            if (user.Rows.Count >= 0)
+            if (user.Rows.Count >0)
             {
                 context.Response.Write("此帳號存在");
             }

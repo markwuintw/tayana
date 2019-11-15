@@ -6,18 +6,32 @@
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="新增船型" OnClick="Button1_Click" />
-            <asp:Button ID="Button5" class="btn btn-primary waves-effect" runat="server" Text="上船首頁照片" OnClick="Button2_Click" />
-            <div class="card">
+            <div class="card" style="padding: 15px;">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" GridLines="None" Height="381px" Width="978px" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" CssClass="table" OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
                     <Columns>
-                        <asp:BoundField DataField="model" HeaderText="型號" SortExpression="model" />
+                        <asp:BoundField DataField="RowNumber" HeaderText="編號" SortExpression="RowNumber" />
+
+                        <asp:TemplateField HeaderText="船型">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text=' <%# Eval("series").ToString()+" "+Eval("model").ToString() %> '></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+<%--                        <asp:BoundField DataField="model" HeaderText="型號" SortExpression="model" />--%>
                         <asp:BoundField DataField="new" HeaderText="新船型" SortExpression="new" />
+
+                        <asp:TemplateField HeaderText="首頁照片">
+                            <ItemTemplate>
+                                <img id="Image1" runat="server" src='<%# "/upload/images/"+Eval("photo") %>' style="width: 500px; height: 300px; object-fit: cover;" />
+                                <%--                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# "/upload/images/"+Eval("photo") %>' />--%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="功能">
                             <ItemTemplate>
-                                <asp:Button ID="Button4" runat="server" CommandName="select" Text="新增圖檔" />
-                                <asp:Button ID="Button2" runat="server" Text="修改" CommandName="Edit" />
-                                <asp:Button ID="Button3" runat="server" Text="刪除" CommandName="Delete" OnClientClick="javascript:if(!window.confirm('你確定要刪除嗎?')) window.event.returnValue = false;" />
+                                <asp:Button ID="Button4" runat="server" CommandName="select" Text="新增圖檔" class="btn btn-primary waves-effect" />
+                                <asp:Button ID="Button2" runat="server" Text="修改" CommandName="Edit" class="btn btn-primary waves-effect" />
+                                <asp:Button ID="Button3" runat="server" Text="刪除" CommandName="Delete" class="btn btn-primary waves-effect" OnClientClick="javascript:if(!window.confirm('你確定要刪除嗎?')) window.event.returnValue = false;" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

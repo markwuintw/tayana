@@ -12,8 +12,8 @@
             <!-- Basic Validation -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
+                    <div class="card" style="padding: 15px;">
+                        <%--<div class="header">
                             <h2>帳號資訊</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -27,42 +27,22 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                        </div>--%>
                         <div class="body">
                             <div class="form-group form-float">
                                     <div class="form-line">
                                         
-                                        <asp:TextBox ID="accountyo" class="form-control" name="account"  required="" aria-required="true" runat="server" ClientIDMode="Static"></asp:TextBox>
+                                        <asp:TextBox ID="accountyo" class="form-control" name="account"  required="" aria-required="true" runat="server" ClientIDMode="Static"></asp:TextBox> 
+                                        <%--ClientIDMode="Static" 讓物件ID不隨MasterPage更動--%>
+
                       <%--                  <input type="text" class="form-control" name="account" required="" aria-required="true" runat="server">--%>
                                         <label class="form-label">Account</label>
                                     </div>
 
                                 <%--  驗證該帳號是否已存在  --%>
                                     <input id="Button2" type="button" value="驗證該帳號是否已存在" /><%--<asp:Label ID="accountAlert" runat="server" Text=""></asp:Label>--%>
-                                    <span id="accountAlert"></span>
-                                    <script>
-                                        var checkbtn = document.getElementById("Button2");
-
-                                        checkbtn.addEventListener("click",
-                                            function () {
-                                                var username = document.getElementById("accountyo").VALUE;
-                                                console.log(username);
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open("GET", 'https://localhost:44330/checkusername.ashx?username=' + username);
-                                                xhr.setRequestHeader("Accept", "application/text");
-                                                xhr.send();
-
-                                                xhr.onload = function () {
-                                                    console.log(xhr);
-                                                    var data = xhr.responseText;
-                                                    console.log(data);
-                                                    var message = document.getElementById("accountAlert");
-                                                    message.innerText = data;
-                                                }
-
-                                            });
-                                    </script>
-                                </div>
+                                    <span id="accountAlert" style="display: inline-block; width: 50px;"></span>
+                            </div>
                                 
                                 
                                 <%-- 密碼欄及確認密碼欄是用JS，參考 https://stackoverflow.com/questions/9142527/can-you-require-two-form-fields-to-match-with-html5 ，重點在於"密碼欄"加 ClientIDMode="Static"，確認密碼欄加 oninput="check(this)" ，
@@ -305,5 +285,27 @@
                 </div>
             </div>--%>
             <!-- #END# Validation Stats -->
+<script>
+    var checkbtn = document.getElementById("Button2");
+    var username = document.getElementById("accountyo");
+    
+    checkbtn.addEventListener("click",
+        function () {
+            console.log(username.value);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", '/sys/checkusername.ashx?username=' + username.value);
+            xhr.setRequestHeader("Accept", "application/text");
+            xhr.send();
+
+            xhr.onload = function () {
+                console.log(xhr);
+                var data = xhr.responseText;
+                console.log(data);
+                var message = document.getElementById("accountAlert");
+                message.innerText = data;
+            }
+
+        });
+</script>
         </div>
 </asp:Content>

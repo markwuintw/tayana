@@ -37,7 +37,8 @@
         <!--------------------------------選單開始---------------------------------------------------->  
         <div class="menu">
             <ul>
-                <li class="menuli01"><a href="/yachts1.aspx?id=10" style="height: 70px;width: 80px;display: inline-block;">Yachts</a></li>
+                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+<%--                <li class="menuli01"><a href="/yachts1.aspx?id=10" style="height: 70px;width: 80px;display: inline-block;">Yachts</a></li>--%>
                 <li class="menuli02"><a href="/new_list.aspx" style="height: 70px;width: 80px;display: inline-block;">>NEWS</a></li>
                 <li class="menuli03"><a href="/Company.aspx" style="height: 70px;width: 80px;display: inline-block;">>COMPANY</a></li>
                 <li class="menuli04"><a href="/dealers.aspx" style="height: 70px;width: 80px;display: inline-block;">>DEALERS</a></li>

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="Tayana.sys.Site2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="Tayana.sys.Site2"  %>
 
 <!DOCTYPE html>
 
@@ -36,7 +36,9 @@
     <link href="~/sys/css/themes/all-themes.css" rel="stylesheet">
     <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;box-sizing: content-box;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
     <link href="~/sys/StyleoridMainPage.css" rel="stylesheet" />
-    <script src="/ckeditor4/ckeditor.js"></script>
+
+<%--    <script src="/ckeditor4/ckeditor.js"></script>--%>
+    <script src="/ckeditor/ckeditor.js"></script>
     
     <asp:ContentPlaceHolder ID="head" runat="server">
 
@@ -47,6 +49,7 @@
 <body class="theme-lime ls-closed">
 <!-- Page Loader -->
 <form id="form1" runat="server">
+    <asp:HiddenField ID="HiddenField2" runat="server" />
     <asp:HiddenField ID="HiddenField1" runat="server" />
     <div class="page-loader-wrapper" style="display: none;">
         <div class="loader">
@@ -316,19 +319,46 @@
                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 482px;"><ul class="list" style="overflow: hidden; width: auto; height: 482px;">
                     <li class="header">MAIN NAVIGATION</li>
                     <asp:Literal ID="pMenu" runat="server"></asp:Literal>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                            <i class="material-icons">swap_calls</i>
+                            <span>前往官網</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/index.aspx" class=" waves-effect waves-block">Index</a>
+                            </li>
+                            <li>
+                                <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                            </li>
+                            <li>
+                                <a href="/new_list.aspx" class=" waves-effect waves-block">News</a>
+                            </li>
+                            <li>
+                                <a href="/Company.aspx" class=" waves-effect waves-block">Company</a>
+                            </li>
+                            <li>
+                                <a href="/dealers.aspx" class=" waves-effect waves-block">Dealers</a>
+                            </li>
+                            <li>
+                                <a href="/contact.aspx" class=" waves-effect waves-block">Contact</a>
+                            </li>
+                        </ul>
+                    </li>
 <%--                    <li class="active">
                         <a href="accountManager.aspx" class="toggled waves-effect waves-block">
                             <i class="material-icons">supervisor_account</i>
                             <span>帳號管理</span>
                         </a>
                     </li>--%>
-                    <li>
+                    <%--<li>
                         <a href="pages/typography.html" class=" waves-effect waves-block">
                             <i class="material-icons">text_fields</i>
                             <span>Typography</span>
                         </a>
-                    </li>
-                    <li>
+                    </li>--%>
+                    <%--<li>
                         <a href="pages/helper-classes.html" class=" waves-effect waves-block">
                             <i class="material-icons">layers</i>
                             <span>Helper Classes</span>
@@ -650,7 +680,7 @@
                             <i class="material-icons col-light-blue">donut_large</i>
                             <span>Information</span>
                         </a>
-                    </li>
+                    </li>--%>
                 </ul><div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 249.811px;"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
             </div>
             <!-- #Menu -->
@@ -861,9 +891,9 @@
 
     
     <!-- Demo Js -->
-    <script src="/sys/js/demo.js"></script>
+    <%--<script src="/sys/js/demo.js"></script>
 
-    <script >document.querySelector(".forchangedate").setAttribute("type", "date")</script>
+    <script >document.querySelector(".forchangedate").setAttribute("type", "date")</script>--%>
 
    
 

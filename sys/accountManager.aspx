@@ -5,7 +5,7 @@
     <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="新增帳號" OnClick="Button1_Click" />
-                    <div class="card">
+                    <div class="card" style="padding: 15px;">
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" GridLines="None" Height="381px" Width="978px" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" CssClass="table">
                             <Columns>
                                 <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />

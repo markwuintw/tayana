@@ -16,7 +16,7 @@
         <img src="images/banner02_masks.png" alt="&quot;&quot;" /></div>
     <!--遮罩結束-->
     <!--------------------------------換圖開始---------------------------------------------------->
-    <div class="banner">
+    <div class="banner" style=" height: 370px;">
         <ul>
             <li>
                 <img src="images/newbanner.jpg" alt="Tayana Yachts" /></li>
@@ -37,7 +37,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
      <!--------------------------------右邊選單開始---------------------------------------------------->
-            <div id="crumb">
+            <div id="crumb" style="top: 515px;">
                 <a href="index.aspx">Home</a> >> <a href="#">News </a>>> <a href="#"><span class="on1">News &
                     Events</span></a></div>
             <div class="right">

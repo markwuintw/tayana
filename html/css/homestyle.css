@@ -115,7 +115,7 @@ body {
 	width: 967px;
 	margin-top: 19px;
 	padding-left: 18px;
-	height: 371px;
+	height: 449px;
 	overflow: hidden;
 }
 #buttom01 {
@@ -135,8 +135,8 @@ body {
 	height: 371px;
 	width: 967px;
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 18px;
+	top: 113px;
 	z-index: 200;
 	float: right;
 }
@@ -420,7 +420,7 @@ body {
 .list02 p {
 	float: left;
 	background-color: #FFFFFF;
-	height: 148px;
+	/*height: 148px;*/
 	width: 209px;
 	overflow: hidden;
 }
@@ -434,6 +434,14 @@ body {
 	float: left;
 	width: 33%;
 }
+/*.list02 img {
+    border-width: 0px;
+    height: 200px;
+    width: 160px;
+    object-fit: cover;
+}*/
+
+
 .list03 {
 	float: left;
 	width: 100%;
@@ -495,7 +503,7 @@ body {
 }
 #crumb {
 	position: absolute;
-	top: 515px;
+	top: 590px;
 	right: 19px;
 	font-size: 80%;
 	color: #747474;

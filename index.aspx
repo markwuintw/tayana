@@ -24,7 +24,7 @@
             <!--------------------------------選單開始---------------------------------------------------->
             <div class="menu">
                 <ul>
-                    <li class="menuli01"><a href="/yachts1.aspx?id=10" style="height: 70px; width: 80px; display: inline-block;">Yachts</a></li>
+                    <li class="menuli01"><a href="/yachts1.aspx" style="height: 70px; width: 80px; display: inline-block;">Yachts</a></li>
                     <li class="menuli02"><a href="/new_list.aspx" style="height: 70px; width: 80px; display: inline-block;">>NEWS</a></li>
                     <li class="menuli03"><a href="/Company.aspx" style="height: 70px; width: 80px; display: inline-block;">>COMPANY</a></li>
                     <li class="menuli04"><a href="/dealers.aspx" style="height: 70px; width: 80px; display: inline-block;">>DEALERS</a></li>
@@ -92,9 +92,9 @@
                 <itemtemplate>
                     <!--TOP第一則最新消息-->
                     <li>
-<%--                        <div class="news02">
-                        <div class="news01">--%>
-                        <div class='<%# "news0"+ (Eval("top").ToString()=="True"?1:2) %>'>
+<%--                        <div class="news02">--%>
+                        <div class="news01">
+<%--                        <div class='<%# "news0"+ (Eval("top").ToString()=="True"?1:2) %>'>--%>
                             <!--TOP標籤-->
                             <div class="newstop" style="top: 33px;">
                                 <asp:Image ID="Image2" runat="server" ImageUrl="images/new_top01.png"  Visible='<%# Eval("top").ToString()=="False"?false:true %>' />
@@ -106,7 +106,7 @@
                                 </p>
                             </div>
                             <asp:HiddenField ID="HiddenField1" runat="server" Value='<%# Eval("title").ToString()%>' />
-                            <p class="news02p2"><span><%# Eval("title").ToString().Length>22?Eval("title").ToString().Substring(0,22)+"..":Eval("title").ToString() %></span> <a href='<%# "/new_view/id="+ Eval("id") %>'><%# Eval("brief").ToString().Length>110?Eval("brief").ToString().Substring(0,110)+"...":Eval("brief").ToString() %></a></p>
+                            <p class="news02p2"><span><%# Convert.ToDateTime(Eval("initDate")).ToString("yyyy/MM/dd")%></span><span><a href='<%# "/new_view?id="+ Eval("id") %>'><%# Eval("title").ToString().Length>22?Eval("title").ToString().Substring(0,22)+"..":Eval("title").ToString() %></a></span></p>
                         </div>
                     </li>
                     <!--TOP第一則最新消息結束-->

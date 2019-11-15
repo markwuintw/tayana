@@ -12,14 +12,14 @@ namespace Tayana.sys.Tayana
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
                 // 寫至 MasterPage 的 Head 的 Tittle。
                 Master.Page.Title = "MK後台- 遊艇型號總表";
 
-                System.IO.Path.GetFileName(Request.PhysicalPath);
-                HiddenField HiddenField1 = (HiddenField) Master.FindControl("HiddenField1");
-                HiddenField1.Value = System.IO.Path.GetFileName(Request.PhysicalPath);
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "yachts";
 
                 showData();
 
@@ -33,7 +33,7 @@ namespace Tayana.sys.Tayana
 
             SqlConnection connection = new SqlConnection(strConn);
 
-            string code = $"SELECT  id, model, new, initTime FROM tayanaSummary where model!='首頁'";
+            string code = $"with tayanaSummaryyy as ( SELECT  ROW_NUMBER() OVER(ORDER BY tayanaSummary.model asc) AS RowNumber,id, series, model, new,(select photo from TayanaPhotoList where fid= tayanaSummary.id and home=1 ) as photo, initTime FROM tayanaSummary ) select* from tayanaSummaryyy";
 
             SqlCommand command = new SqlCommand(code, connection);
 
@@ -95,6 +95,7 @@ namespace Tayana.sys.Tayana
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             string id = GridView1.DataKeys[e.NewSelectedIndex].Value.ToString();
+
             Response.Redirect($"yachtsPhotoAdd.aspx?id={id}");
         }
 

@@ -14,6 +14,8 @@ namespace Tayana.sys.Tayana
         {
             if (!IsPostBack)
             {
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "news";
                 showData();
             }
         }
@@ -24,7 +26,7 @@ namespace Tayana.sys.Tayana
 
             SqlConnection connection = new SqlConnection(strConn);
 
-            string code = $"SELECT  *  FROM news order by [top] DESC,InitDate DESC" ;
+            string code = $"with newsss as (select ROW_NUMBER() over (order by news.[top] DESC , news.InitDate DESC) as ROWNUMBER,*  FROM news ) select * from newsss" ;
 
             SqlCommand command = new SqlCommand(code, connection);
 

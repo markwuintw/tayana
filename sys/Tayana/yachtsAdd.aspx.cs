@@ -16,14 +16,17 @@ namespace Tayana.sys.Tayana
         {
             if (!IsPostBack)
             {
-                
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "yachts";
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            string fileName;
+            string fileName="";
+            string fileNameStore = "";
+
             if (FileUpload2.HasFile)
             {
                 if (FileUpload2.PostedFile.ContentType.IndexOf("pdf") == -1)
@@ -39,13 +42,15 @@ namespace Tayana.sys.Tayana
                 //取得副檔名
                 string Extension = FileUpload2.FileName.Split('.')[FileUpload2.FileName.Split('.').Length - 1];
 
-                //新檔案名稱
+                //檔案名稱
                 fileName = $"{fileName0}.{Extension}";
 
-                //上傳目錄為/upload/Images/
-                FileUpload2.SaveAs(Server.MapPath(String.Format("~/sys/Tayana/images/{0}", fileName)));
+                //儲存名稱
+                fileNameStore = String.Format("{0:yyyyMMddhhmmsss}.{1}", DateTime.Now, Extension);
 
-                
+                //上傳目錄為/upload/Images/
+                FileUpload2.SaveAs(Server.MapPath(String.Format("~/sys/Tayana/images/{0}" , fileNameStore)));
+
             }
 
 
@@ -54,10 +59,13 @@ namespace Tayana.sys.Tayana
 
             SqlConnection connection = new SqlConnection(strConn);
 
-            string code = $"INSERT INTO tayanaSummary ( [model], [new], [CONTENT], [DIMENSIONS], [DOWNLOADS], [Layout & deck plan], [DETAIL SPECIFICATION], [Video]) VALUES( @model, @new, @CONTENT, @DIMENSIONS, @DOWNLOADS, @Layout, @DETAIL, @Video)";
+            string code = $"INSERT INTO tayanaSummary ( [series], [model], [new], [CONTENT], [DIMENSIONS], [DOWNLOADS], [fileLocation], [Layout & deck plan], [DETAIL SPECIFICATION], [Video]) VALUES( @series, @model, @new, @CONTENT, @DIMENSIONS, @DOWNLOADS, @fileLocation, @Layout, @DETAIL, @Video)";
 
             //new一個類別為SqlCommand的指令(其名為Command)，而其用法為 new SqlCommand("SQL語法",通道名稱);  ，其中 SQL語法 可由精靈產生
             SqlCommand command = new SqlCommand(code, connection);
+
+            command.Parameters.Add("@series", SqlDbType.NVarChar);
+            command.Parameters["@series"].Value = TextBox3.Text ?? "";
 
             command.Parameters.Add("@model", SqlDbType.NVarChar);
             command.Parameters["@model"].Value = TextBox1.Text ?? "";
@@ -72,7 +80,10 @@ namespace Tayana.sys.Tayana
             command.Parameters["@DIMENSIONS"].Value = editor2.Value ?? "";
 
             command.Parameters.Add("@DOWNLOADS", SqlDbType.NVarChar);
-            command.Parameters["@DOWNLOADS"].Value = FileUpload2.FileName.Split('.')[0] + "." + FileUpload2.FileName.Split('.')[FileUpload2.FileName.Split('.').Length - 1];
+            command.Parameters["@DOWNLOADS"].Value = fileName;
+
+            command.Parameters.Add("@fileLocation", SqlDbType.NVarChar);
+            command.Parameters["@fileLocation"].Value = fileNameStore;
 
             command.Parameters.Add("@Layout", SqlDbType.NVarChar);
             command.Parameters["@Layout"].Value = editor4.Value ?? "";

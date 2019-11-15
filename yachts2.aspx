@@ -122,6 +122,8 @@
                 </ul>
             </div>
             <div class="clear"></div>
+            <p class="topbuttom">
+                <img src="images/top.gif" alt="top" /></p>
             <!--------------------------------內容結束------------------------------------------------------>
         </div>
     </div>

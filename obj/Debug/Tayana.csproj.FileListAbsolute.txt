@@ -55,4 +55,5 @@ C:\Users\MARK\source\repos\Tayana\obj\Debug\Tayana.dll
 C:\Users\MARK\source\repos\Tayana\obj\Debug\Tayana.pdb
 C:\Users\MARK\source\repos\Tayana\bin\Newtonsoft.Json.dll
 C:\Users\MARK\source\repos\Tayana\bin\Newtonsoft.Json.xml
+C:\Users\MARK\source\repos\Tayana\bin\CKFinder.dll
 C:\Users\MARK\source\repos\Tayana\obj\Debug\Tayana.csprojAssemblyReference.cache

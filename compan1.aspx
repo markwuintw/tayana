@@ -13,7 +13,7 @@
                                      float: right; "><img src="/upload/images/company.jpg" alt="&quot;&quot;" width="967" height="371" /></div>
     <!--------------------------------換圖開始----------------------------------------------------> 
 
-    <div class="banner">
+    <div class="banner" style="height: 370px;">
         <ul>
             <li><img src="images/newbanner.jpg" alt="Tayana Yachts" /></li>
         </ul>
@@ -46,7 +46,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
     <!--------------------------------右邊選單開始----------------------------------------------------> 
-    <div id="crumb"><a href="index.aspx">Home</a> >> <a href="/company.aspx">Company  </a> >> <a href="/compan1.aspx"><span class="on1">Certificat</span></a></div>
+    <div id="crumb" style="top: 515px;"><a href="index.aspx">Home</a> >> <a href="/company.aspx">Company  </a> >> <a href="/compan1.aspx"><span class="on1">Certificat</span></a></div>
     <div class="right"> 
         <div class="right1">
             <div class="title"> <span>Certificat</span></div>

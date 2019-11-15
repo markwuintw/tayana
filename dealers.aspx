@@ -11,7 +11,7 @@
 
     <!--------------------------------換圖開始---------------------------------------------------->
 
-    <div class="banner">
+    <div class="banner" style="height: 370px;">
         <ul>
             <li>
                 <img src="images/newbanner.jpg" alt="Tayana Yachts" /></li>
@@ -58,9 +58,10 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
     <!--------------------------------右邊選單開始---------------------------------------------------->
-    <div id="crumb">
-        <a href="/index.aspx">Home</a> >> <a href="/dealers.aspx">Dealers </a>>> <a href="#"><span class="on1">
-            <asp:Literal ID="Literal1" runat="server"></asp:Literal></span></a>
+    <div id="crumb" style="top: 515px;">
+        <a href="/index.aspx">Home</a> >> <a href="/dealers.aspx">Dealers </a>>><asp:Literal ID="Literal1" runat="server"></asp:Literal>
+<%--        <a href="/index.aspx">Home</a> >> <a href="/dealers.aspx">Dealers </a>>> <a href="/dealers.aspx?id ="><span class="on1">
+            <asp:Literal ID="Literal1" runat="server"></asp:Literal></span></a>--%>
     </div>
     <div class="right">
         <div class="right1">
@@ -77,15 +78,14 @@
                 <ItemTemplate>
                     <li>
                         <div class="list02">
-                            <ul>
+                            <ul style="display: flex">
                                 <li class="list02li">
                                     <div>
-                                        <p>
-                                            <img src='<%# "/sys/Tayana/images/"+Eval("photo") %>' style="border-width: 0px;" />
-                                        </p>
+                                        <img src='<%# "/sys/Tayana/images/"+Eval("photo") %>' style="border-width: 0px; height: 200px; width: 160px; object-fit: cover;" />
                                     </div>
                                 </li>
-                                <li class="list02li02" style=""><%# Eval("city").ToString() %><br/><%# Eval("content").ToString() %>
+                                <li class="list02li02" style="display: flex;flex-direction: column;"><span><%# Eval("city").ToString() %></span><br/>
+                                    <%# Eval("content").ToString() %>
                                     <a href='' target='_blank'></a></li>
                             </ul>
                         </div>

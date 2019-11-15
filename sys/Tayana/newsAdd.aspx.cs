@@ -16,7 +16,8 @@ namespace Tayana.sys.Tayana
         {
             if (!IsPostBack)
             {
-
+                HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
+                HiddenField3.Value = "news";
             }
         }
 

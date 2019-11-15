@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="checkusername.ashx.cs" Class="backGroundSystem_Orid.checkusername" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="checkusername.ashx.cs" Class="Tayana.sys.checkusername" %>
