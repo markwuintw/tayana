@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageOther.Master" AutoEventWireup="true" CodeBehind="dealers.aspx.cs" Inherits="Tayana.dealers" %>
+<%@ Register TagPrefix="uc1" TagName="pages" Src="~/pages.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -97,6 +98,7 @@
                 </div>
                 </FooterTemplate>
             </asp:Repeater>
+            <uc1:pages runat="server" id="pages" />
 
 
             <%--  <li>

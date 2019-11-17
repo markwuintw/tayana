@@ -59,8 +59,11 @@ namespace Tayana
 
                     Literal2.Text = dataReader["series"].ToString() + " " + dataReader["model"].ToString();
 
-                    Literal3.Text +=
-                        $@"<li><a class=""menu_yli01"" href=""yachts1.aspx?id={id}"">overView</a></li><li><a class=""menu_yli02"" href=""yachts2.aspx?id={id}"">Layout & deck pla</a>n</li><li><a class=""menu_yli03"" href=""yachts3.aspx?id={id}"">Specification</a></li>";
+                    Literal3.Text +=$@"<li><a class=""menu_yli01"" href=""yachts1.aspx?id={id}"">overView</a></li>"+ Environment.NewLine;
+
+                    Literal3.Text += $@"<li><a class=""menu_yli02"" href=""yachts2.aspx?id={id}"">Layout & deck pla</a>n</li>" + Environment.NewLine;
+
+                    Literal3.Text += $@"<li><a class=""menu_yli03"" href=""yachts3.aspx?id={id}"">Specification</a></li>" + Environment.NewLine;
 
                     //if (dataReader["Video"].ToString() != "")
                     //{
@@ -79,7 +82,7 @@ namespace Tayana
 
                     if (dataReader["DOWNLOADS"].ToString()!="")
                     {
-                        Literal6.Text = $@"<div class=""downloads""><p><img src=""images/downloads.gif"" alt="" & quot; &quot; "" /></p><ul><asp:Literal ID=""Literal6"" runat=""server""></asp:Literal><li><a href = ""/sys/tayana/images/{dataReader["fileLocation"].ToString()}"">{dataReader["DOWNLOADS"].ToString()}</a></li></ul></div>";
+                        Literal6.Text += $@"<div class=""downloads""><p><img src=""images/downloads.gif"" alt="" & quot; &quot; "" /></p><ul><asp:Literal ID=""Literal6"" runat=""server""></asp:Literal><li><a href = ""/sys/tayana/images/{dataReader["fileLocation"].ToString()}"">{dataReader["DOWNLOADS"].ToString()}</a></li></ul></div>";
                     }
 
 

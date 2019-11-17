@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,7 @@ namespace Tayana.sys.Tayana
 
                 showData();
 
+                dataListCountCS();
             }
 
         }
@@ -33,9 +35,12 @@ namespace Tayana.sys.Tayana
 
             SqlConnection connection = new SqlConnection(strConn);
 
-            string code = $"with tayanaSummaryyy as ( SELECT  ROW_NUMBER() OVER(ORDER BY tayanaSummary.model asc) AS RowNumber,id, series, model, new,(select photo from TayanaPhotoList where fid= tayanaSummary.id and home=1 ) as photo, initTime FROM tayanaSummary ) select* from tayanaSummaryyy";
+            string code = $"with tayanaSummaryyy as ( SELECT  ROW_NUMBER() OVER(ORDER BY tayanaSummary.model asc) AS RowNumber,id, series, model, new,(select photo from TayanaPhotoList where fid= tayanaSummary.id and home=1 ) as photo, initTime FROM tayanaSummary ) select* from tayanaSummaryyy where ROWNUMBER >=((@page - 1) * 5 + 1)  and ROWNUMBER <=(@page * 5)";
 
             SqlCommand command = new SqlCommand(code, connection);
+
+            command.Parameters.Add("@page", SqlDbType.Int);
+            command.Parameters["@page"].Value = Convert.ToInt32(Request.QueryString["page"] ??"1");
 
             connection.Open();
 
@@ -47,6 +52,34 @@ namespace Tayana.sys.Tayana
 
             connection.Close();
 
+        }
+
+        protected void dataListCountCS()
+        {
+
+            string strConn = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
+                .ConnectionString;
+
+            SqlConnection connection = new SqlConnection(strConn);
+
+            string code = $"SELECT COUNT(*) AS total  FROM tayanaSummary  WHERE 1=1";
+
+            SqlCommand command = new SqlCommand(code, connection);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            int itemsCount = table.Rows.Count > 0 ? Convert.ToInt32(table.Rows[0][0].ToString()) : 0;//
+
+            //分頁控制項丟入參數做測試
+
+            pages.totalitems = itemsCount;//每頁數量
+            pages.limit = 5;//資料總量
+            pages.targetpage = "yachts.aspx";
+            pages.showPageControls();//顯示分頁控制項 
         }
 
         protected void Button1_Click(object sender, EventArgs e)

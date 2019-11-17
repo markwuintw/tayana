@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="yachts3.aspx.cs" Inherits="Tayana.yachts3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<%--<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">--%>
 <%--    <!--遮罩-->
     <div class="bannermasks">
         <img src="images/banner01_masks.png" alt="&quot;&quot;" />
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>--%>
-</asp:Content>
+<%--</asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
    <%-- <div class="left">
         <div class="left1">

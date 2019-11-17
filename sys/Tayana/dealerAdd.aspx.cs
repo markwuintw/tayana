@@ -102,7 +102,12 @@ namespace Tayana.sys.Tayana
             if (FileUpload1.HasFile)
             {
                 command.Parameters.Add("@photo", SqlDbType.NVarChar);
-                command.Parameters["@photo"].Value = fileName; ;
+                command.Parameters["@photo"].Value = fileName; 
+            }
+            else
+            {
+                command.Parameters.Add("@photo", SqlDbType.NVarChar);
+                command.Parameters["@photo"].Value = "";
             }
             
 

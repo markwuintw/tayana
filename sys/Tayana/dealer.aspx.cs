@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Tayana.sys.Tayana
                 HiddenField HiddenField3 = (HiddenField)Master.FindControl("HiddenField1");
                 HiddenField3.Value = "dealer";
                 showData();
+                dataListCountCS();
             }
         }
         private void showData()
@@ -31,6 +33,9 @@ namespace Tayana.sys.Tayana
 
             SqlCommand command = new SqlCommand(code, connection);
 
+            command.Parameters.Add("@page", SqlDbType.Int);
+            command.Parameters["@page"].Value = Convert.ToInt32(Request.QueryString["page"] ?? "1");
+
             connection.Open();
 
             SqlDataReader dataReader = command.ExecuteReader();
@@ -43,6 +48,34 @@ namespace Tayana.sys.Tayana
 
         }
 
+
+        protected void dataListCountCS()
+        {
+
+            string strConn = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
+                .ConnectionString;
+
+            SqlConnection connection = new SqlConnection(strConn);
+
+            string code = $"SELECT COUNT(*) AS total FROM dealercity WHERE 1 =1";
+
+            SqlCommand command = new SqlCommand(code, connection);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            int itemsCount = table.Rows.Count > 0 ? Convert.ToInt32(table.Rows[0][0].ToString()) : 0;//
+
+            //分頁控制項丟入參數做測試
+
+            pages.totalitems = itemsCount;//每頁數量
+            pages.limit = 5;//資料總量
+            pages.targetpage = "dealer.aspx";
+            pages.showPageControls();//顯示分頁控制項 
+        }
 
         protected void GridView1_RowDeleting1(object sender, GridViewDeleteEventArgs e)
         {
@@ -86,7 +119,7 @@ namespace Tayana.sys.Tayana
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"/sys/tayana/dealerAdd.aspx");
+            Response.Redirect($"/sys/tayana/dealerArea.aspx");
 
         }
     }

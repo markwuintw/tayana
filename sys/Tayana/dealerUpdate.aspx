@@ -14,14 +14,12 @@
 
                     <h3>區域</h3>
                     <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
-                    <span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="調整大小" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">元件路徑</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span>
-
+                    <div style="background-color: #E9E9E9;margin: 15px -15px 0 -15px;display: block;width: auto;">&nbsp;</div>
                     <%--  --%>
 
                     <h3>經銷商</h3>
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br/>
-                    <span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="調整大小" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">元件路徑</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span>
-                    
+                    <div style="background-color: #E9E9E9;margin: 15px -15px 0 -15px;display: block;width: auto;">&nbsp;</div>                    
                     <%--  --%>
 
                     <h3>照片</h3>
@@ -48,7 +46,7 @@
                     <%--  --%>
 
                 </div>
-                <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="確定新增" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="確定更新" OnClick="Button1_Click" />
             </div>
         </div>
     </div>

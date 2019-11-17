@@ -26,7 +26,6 @@ namespace Tayana
 
         protected void dataListCS()
         {
-            string commandString = File.ReadAllText(HttpContext.Current.Server.MapPath("App_Code/sql/dataListCS.sql"));
 
             string strConn = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["tayanaConnectionString"]
                 .ConnectionString;
@@ -34,6 +33,7 @@ namespace Tayana
             SqlConnection connection = new SqlConnection(strConn);
 
             //string code3 = $"SELECT  *  FROM   news   order by  [top] desc , initdate desc";
+            string commandString = File.ReadAllText(HttpContext.Current.Server.MapPath("App_Code/sql/newsDataListCS.sql"));
 
             SqlCommand command3 = new SqlCommand(commandString, connection);
 

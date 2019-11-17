@@ -1,12 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/sys/Site2.Master" AutoEventWireup="true" CodeBehind="dealer.aspx.cs" Inherits="Tayana.sys.Tayana.dealer" %>
 
+<%@ Register Src="~/pages.ascx" TagPrefix="uc1" TagName="pages" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <asp:Button ID="Button4" class="btn btn-primary waves-effect" runat="server" Text="新增區域別" OnClick="Button1_Click" />
-            <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="新增經銷商" OnClick="Button4_Click"  />
+            <asp:Button ID="Button4" class="btn btn-primary waves-effect" runat="server" Text="新增區域別" OnClick="Button4_Click" />
+            <asp:Button ID="Button1" class="btn btn-primary waves-effect" runat="server" Text="新增經銷商" OnClick="Button1_Click"  />
             <div class="card" style="padding: 15px;">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id" OnRowDeleting="GridView1_RowDeleting1" OnRowEditing="GridView1_RowEditing1" CssClass="table" GridLines="None">
                     <Columns>
@@ -34,9 +37,9 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <uc1:pages runat="server" ID="pages" />
             </div>
         </div>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:tayanaConnectionString %>" SelectCommand="SELECT * FROM [dealers]"></asp:SqlDataSource>
-
 </asp:Content>

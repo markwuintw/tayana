@@ -75,7 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\sql\dataListCS.sql" />
+    <Content Include="App_Code\sql\newsDataListCS.sql" />
     <Content Include="App_Code\sql\dealer.sql" />
     <Content Include="App_Code\sql\dealerUpdate.sql" />
     <Content Include="ckeditor\adapters\jquery.js" />
@@ -4043,6 +4043,7 @@
     <Content Include="sys\plugins\waitme\waitMe.min.js" />
     <Content Include="sys\Tayana\dealer.aspx" />
     <Content Include="sys\Tayana\dealerAdd.aspx" />
+    <Content Include="sys\Tayana\dealerArea.aspx" />
     <Content Include="sys\Tayana\dealerUpdate.aspx" />
     <Content Include="sys\Tayana\news.aspx" />
     <Content Include="sys\Tayana\newsAdd.aspx" />
@@ -4547,6 +4548,13 @@
     </Compile>
     <Compile Include="sys\Tayana\dealerAdd.aspx.designer.cs">
       <DependentUpon>dealerAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sys\Tayana\dealerArea.aspx.cs">
+      <DependentUpon>dealerArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sys\Tayana\dealerArea.aspx.designer.cs">
+      <DependentUpon>dealerArea.aspx</DependentUpon>
     </Compile>
     <Compile Include="sys\Tayana\dealerUpdate.aspx.cs">
       <DependentUpon>dealerUpdate.aspx</DependentUpon>

@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/sys/Site2.Master" AutoEventWireup="true" CodeBehind="news.aspx.cs" Inherits="Tayana.sys.Tayana.news" %>
 
+<%@ Register Src="~/pages.ascx" TagPrefix="uc1" TagName="pages" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -37,6 +40,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <uc1:pages runat="server" ID="pages" />
             </div>
         </div>
     </div>

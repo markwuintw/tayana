@@ -70,7 +70,7 @@
                         </itemtemplate> 
                         <FooterTemplate>
                         </ui>
-
+                        </div>
 <%--                        <div class="pagenumber">
                             <div class="pagination">共<span style="color:red" >62</span>筆資料<span class="disabled">上一頁</span><span class="current">1</span><a href="new_list.aspx?page=2">2</a><a href="new_list.aspx?page=3">3</a><a href="new_list.aspx?page=4">4</a><a href="new_list.aspx?page=5">5</a><a href="new_list.aspx?page=6">6</a><a href="new_list.aspx?page=7">7</a><a href="new_list.aspx?page=2">下一頁</a></div>
 
@@ -80,6 +80,7 @@
                         </FooterTemplate>
                     </asp:Repeater>
                 <uc1:pages runat="server" id="pages" />
+
                 <%--<li>
                                     <div class="list01">
                                         <ul>

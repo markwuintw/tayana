@@ -33,7 +33,7 @@ namespace Tayana
 
                 string idd = table3.Rows[0][0].ToString();
 
-                Literal1.Text = $@"<li class=""menuli01""><a href=""/yachts1.aspx?id={idd}"" style=""height:70px; width:80px; display:inline-block; "">Yachts</a></li>";
+                Literal1.Text = $@"<li class=""menuli01""><a href=""/yachts1.aspx?id={idd}"" style=""height:70px; width:80px; display:inline-block; "">Yachts</a></li>" + Environment.NewLine;
 
 
 
@@ -101,11 +101,11 @@ namespace Tayana
                 {
                     if (table2.Rows[i][2].ToString()=="True")
                     {
-                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}(New Building)</a></li>";
+                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}(New Building)</a></li>"+ Environment.NewLine;
                     }
                     else
                     {
-                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}</a></li>";
+                        leftList.Text += $@"<li><a href=""/yachts1.aspx?id={ table2.Rows[i][0].ToString()}""> {table2.Rows[i][4].ToString()} {table2.Rows[i][1].ToString()}</a></li>" + Environment.NewLine;
                     }
                 }
 
